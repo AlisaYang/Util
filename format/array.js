@@ -70,3 +70,62 @@ function rotate(array, index) {
 
 // rotate([1,2,3,4,5,6,7], 3)
 // (7) [5, 6, 7, 1, 2, 3, 4]
+
+
+// 两个数组交集
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var intersect = function(nums1, nums2) {
+    nums1.sort((a, b) => {
+        return a - b;
+    })
+    nums2.sort((a, b) => {
+        return a - b;
+    })
+
+    let i = 0;
+    let j = 0;
+    let array = []
+
+    // 双指针; 始终移动数值比较小的指针下标
+    while(i < nums1.length && j < nums2.length) {
+        if (nums1[i] == nums2[j]) {
+            array.push(nums1[i])
+            i++
+            j++
+        } else {
+            nums1[i] < nums2[j] ? i++ : j++
+        }
+    }
+
+    return array
+};
+
+// intersect([1,2,2,1], [2,2])
+// [2,2]
+
+
+
+// 数字数组加一
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+var plusOne = function(digits) {
+    // 如果超过16位精度数字，需要用BigInt来转化成数字
+    let number = BigInt(digits.join('')) + BigInt(1)
+        number = number + ''.split('n')[0]
+    let arr = []
+    
+    for (let i = 0; i < number.length; i++) {
+        arr.push(number[i])
+    }
+    return arr
+};
+
+// plusOne([1,2,3])
+// [1,2,4]
