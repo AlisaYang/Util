@@ -73,7 +73,6 @@ function rotate(array, index) {
 
 
 // 两个数组交集
-
 /**
  * @param {number[]} nums1
  * @param {number[]} nums2
